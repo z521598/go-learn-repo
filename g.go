@@ -2,7 +2,7 @@ package main
 
 import(
 	"fmt"
-	_ "runtime"
+	"runtime"
 )
 
 func say(word string){
@@ -13,7 +13,9 @@ func say(word string){
 }
 
 func main(){
+	runtime.GOMAXPROCS(1)
 	go say("hello")
+	runtime.Gosched()
 	say("go")
 
 }
